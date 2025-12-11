@@ -40,7 +40,7 @@ void Awake()
         return;
     }
     gm = this;
-    DontDestroyOnLoad(gameObject);
+    //DontDestroyOnLoad(gameObject);
 }
     public int mapa;
     void Start()
