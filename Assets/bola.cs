@@ -12,7 +12,6 @@ public class bola : MonoBehaviour
     float velocidade;
     LineRenderer lr;
     Rigidbody rb;
-    // Start is called before the first frame update
     void Start()
     {
         lr = GetComponent<LineRenderer>();
@@ -78,8 +77,8 @@ public class bola : MonoBehaviour
                         new Vector3(2 * x, 0, 2 * z),
                         ForceMode.Impulse);
                     lr.enabled = false;
-                    //if (GameManager.gm)
-                    //GameManager.gm.tacada();
+                    if (GameManager.gm)
+                    GameManager.gm.tacada();
                 }
 
             }
