@@ -14,17 +14,19 @@ public class GameManager : MonoBehaviour
     public int pontuacao;
 
     public Canvas canvaPadrao;
+
+        public TextMeshProUGUI textPlacar;
     public Canvas canvaFinal;
 
-    public TextMeshPro recorde;
-    public TextMeshPro pontuacaoTexto;
-    public TextMeshPro passaro;
+    public TextMeshProUGUI recorde;
+    public TextMeshProUGUI textPontuacao;
+    public TextMeshProUGUI passaro;
 
     public Vector3 lastPos;
 
     public static GameManager gm;
 
-    GameObject player;
+    public GameObject player;
 
 
     public int mapa;
@@ -44,11 +46,13 @@ public class GameManager : MonoBehaviour
         tacadas++;
         pontuacao = tacadas - par;
         lastPos = player.transform.position;
+        textPlacar.text = "Par: " + par + "\nTacadas: " + tacadas;
     }
 
     public void finalizarPartida()
     {
-        if (PlayerPrefs.GetInt("recorde" + mapa, 100000) > pontuacao)
+        int recordeSalvo = PlayerPrefs.GetInt("recorde" + mapa, 100000);
+        if (recordeSalvo > pontuacao)
         {
             PlayerPrefs.SetInt("recorde" + mapa, pontuacao);
         }
@@ -87,8 +91,9 @@ public class GameManager : MonoBehaviour
                 passaro.color = new Color32(255, 0, 0, 0);
                 break;
         }
+        textPontuacao.text = "Pontuação: "+pontuacao;
+        recorde.text = "Recorde: "+recordeSalvo;
         passaro.text = p;
-
     }
 
     public void subirFase()
