@@ -5,6 +5,7 @@ using UnityEngine;
 public class bola : MonoBehaviour
 {
 
+    public float speed;
     private float x, z;
     public float maxX, maxZ;
     private Vector2 pi;
@@ -16,7 +17,7 @@ public class bola : MonoBehaviour
     {
         lr = GetComponent<LineRenderer>();
         rb = GetComponent<Rigidbody>();
-        if(lr == null)
+        if (lr == null)
         {
             Debug.Log("Adicionar LineRenderer");
         }
@@ -27,22 +28,32 @@ public class bola : MonoBehaviour
     void Update()
     {
         velocidade = rb.velocity.magnitude;
-        if(velocidade < 0.1f)
+        if (velocidade < 0.1f)
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             lr.enabled = true;
-        } else
+        }
+        else
         {
+            if(velocidade > 1f)
+            {
+                if (GameManager.gm)
+                {
+                    
+                }
+            }
             lr.enabled = false;
         }
 
-        if(lr.enabled)
+        if (lr.enabled)
         {
+                lr.SetPosition(0, transform.position);
+
             for (int i = 0; i < Input.touchCount; i++)
             {
-                Touch t =Input.GetTouch(i);
-                if(t.phase == TouchPhase.Began)
+                Touch t = Input.GetTouch(i);
+                if (t.phase == TouchPhase.Began)
                 {
                     pi = t.position;
                     pf = t.position;
@@ -52,20 +63,14 @@ public class bola : MonoBehaviour
                     lr.SetPosition(0, transform.position);
                     lr.SetPosition(1, transform.position);
                 }
-                if(t.phase == TouchPhase.Moved)
+                if (t.phase == TouchPhase.Moved)
                 {
                     pf = t.position;
                     x = (pi.x - pf.x) * 0.03f;
                     z = (pi.y - pf.y) * 0.03f;
 
-                    if(x > maxX)
-                    {
-                        x = maxX;
-                    }
-                    if (z > maxZ)
-                    {
-                        z = maxZ;
-                    }
+                    x = Mathf.Clamp(x, -maxX, maxX);
+                    z = Mathf.Clamp(z, -maxZ, maxZ);
                     lr.SetPosition(1, new Vector3(
                         transform.position.x + x,
                         transform.position.y,
@@ -74,11 +79,11 @@ public class bola : MonoBehaviour
                 if (t.phase == TouchPhase.Ended)
                 {
                     GetComponent<Rigidbody>().AddForce(
-                        new Vector3(2 * x, 0, 2 * z),
+                        new Vector3(speed * x, 0, speed * z),
                         ForceMode.Impulse);
                     lr.enabled = false;
                     if (GameManager.gm)
-                    GameManager.gm.tacada();
+                        GameManager.gm.tacada();
                 }
 
             }

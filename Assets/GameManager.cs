@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     public Canvas canvaPadrao;
 
-        public TextMeshProUGUI textPlacar;
+    public TextMeshProUGUI textPlacar;
     public Canvas canvaFinal;
 
     public TextMeshProUGUI recorde;
@@ -32,16 +32,16 @@ public class GameManager : MonoBehaviour
     public GameObject camera1;
     public GameObject camera2;
 
-void Awake()
-{
-    if (gm != null && gm != this)
+    void Awake()
     {
-        Destroy(gameObject);
-        return;
+        if (gm != null && gm != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        gm = this;
+        //DontDestroyOnLoad(gameObject);
     }
-    gm = this;
-    //DontDestroyOnLoad(gameObject);
-}
     public int mapa;
     void Start()
     {
@@ -113,9 +113,22 @@ void Awake()
                 p = "Triple Bogey";
                 passaro.color = new Color32(255, 0, 0, 255);
                 break;
+            default:
+                if (pontuacao > 3)
+                {
+                    p = "Disaster Hole";
+                    passaro.color = new Color32(122, 0, 0, 255);
+                    break;
+                }
+                else
+                {
+                    p = "Ostrich";
+                    passaro.color = new Color32(90, 249, 255, 255);
+                    break;
+                }
         }
-        textPontuacao.text = "Pontuação: "+pontuacao;
-        recorde.text = "Recorde: "+recordeSalvo;
+        textPontuacao.text = "Pontuação: " + pontuacao;
+        recorde.text = "Recorde: " + recordeSalvo;
         passaro.text = p;
         camera1.SetActive(false);
         camera2.SetActive(true);

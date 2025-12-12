@@ -505,7 +505,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.4113207, g: 0.3290755, b: 0.10477032, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2150,11 +2150,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7965204985954810809, guid: 682a932867be35742870359e53de8990, type: 3}
       propertyPath: par
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7965204985954810809, guid: 682a932867be35742870359e53de8990, type: 3}
       propertyPath: mapa
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7965204985954810809, guid: 682a932867be35742870359e53de8990, type: 3}
       propertyPath: camera1
