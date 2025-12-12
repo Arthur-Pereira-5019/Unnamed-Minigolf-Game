@@ -9,6 +9,8 @@ public class KillZone : MonoBehaviour
         if(GameManager.gm)
             {
                 other.transform.position = GameManager.gm.lastPos;
+                other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                other.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             }
     }
 }

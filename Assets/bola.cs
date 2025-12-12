@@ -43,7 +43,7 @@ public class bola : MonoBehaviour
                     if(GameManager.gm.wind == true)
                     {
                         GetComponent<Rigidbody>().AddForce(
-                        new Vector3(-0.005f, 0f, 0f),
+                        new Vector3(-0.0095f, 0f, 0f),
                         ForceMode.Impulse);
                     }
                 }

@@ -2674,7 +2674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7965204985954810809, guid: 682a932867be35742870359e53de8990, type: 3}
       propertyPath: mapa
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7965204985954810809, guid: 682a932867be35742870359e53de8990, type: 3}
       propertyPath: camera1
